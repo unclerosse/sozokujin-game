@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy4o7wfhmd2g4"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_rw63v"]
+[ext_resource type="Texture2D" uid="uid://o5dy4ekjqcyn" path="res://sprites/PackCharacterPixelArt09/Player/Run/Player_Run_01.png" id="1_ynde7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mls12"]
+height = 37.5065
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(121, 543)
+script = ExtResource("1_rw63v")
+
+[node name="PlayerRun01" type="Sprite2D" parent="."]
+position = Vector2(30, -30)
+scale = Vector2(4.70506, 4.05263)
+texture = ExtResource("1_ynde7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.00001, -3)
+scale = Vector2(4.70506, 4.05263)
+shape = SubResource("CapsuleShape2D_mls12")

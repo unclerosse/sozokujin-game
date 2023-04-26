@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cy4o7wfhmd2g4"]
+[gd_scene load_steps=20 format=3 uid="uid://cy4o7wfhmd2g4"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_rw63v"]
 [ext_resource type="Texture2D" uid="uid://dqls4twqaosfs" path="res://sprites/PackCharacterPixelArt09/Player/Idle/Player_Idle_01.png" id="2_rc7ql"]
@@ -75,8 +75,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mls12"]
-height = 37.5065
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1j0k5"]
+size = Vector2(22, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgke7"]
+size = Vector2(40, 94)
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(121, 543)
@@ -90,11 +93,16 @@ animation = &"idle"
 frame = 4
 frame_progress = 0.538542
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.00001, -3)
-scale = Vector2(4.70506, 4.05263)
-shape = SubResource("CapsuleShape2D_mls12")
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
 scale = Vector2(4.70506, 4.05263)
 target_position = Vector2(0, 30)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -28)
+shape = SubResource("RectangleShape2D_1j0k5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 30)
+shape = SubResource("RectangleShape2D_mgke7")

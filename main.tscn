@@ -1,16 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv4b6ebwd5k7c"]
+[gd_scene load_steps=6 format=3 uid="uid://dv4b6ebwd5k7c"]
 
 [ext_resource type="PackedScene" uid="uid://cy4o7wfhmd2g4" path="res://player.tscn" id="1_b287v"]
 [ext_resource type="PackedScene" uid="uid://drgw6l1umqasi" path="res://static_body_2d.tscn" id="2_6lqc8"]
 [ext_resource type="PackedScene" uid="uid://bw7swc3s4vnoa" path="res://tile_map.tscn" id="3_jkm0g"]
 [ext_resource type="PackedScene" uid="uid://cv33gmij4e01" path="res://enemy.tscn" id="4_yrd1e"]
+[ext_resource type="PackedScene" uid="uid://dfv2omln6w3ho" path="res://enemy_2.tscn" id="5_lv8c6"]
 
 [node name="main" type="Node2D"]
 texture_filter = 1
 position = Vector2(56, 491)
 
 [node name="player" parent="." instance=ExtResource("1_b287v")]
-position = Vector2(66, -135)
+position = Vector2(164, -131)
 
 [node name="enemy" parent="." instance=ExtResource("4_yrd1e")]
 position = Vector2(330, -303)
@@ -50,3 +51,6 @@ scale = Vector2(0.5, 0.5)
 [node name="platform10" parent="." instance=ExtResource("2_6lqc8")]
 position = Vector2(765, -353)
 scale = Vector2(0.5, 0.5)
+
+[node name="enemy_2" parent="." instance=ExtResource("5_lv8c6")]
+position = Vector2(770, -158)

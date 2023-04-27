@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://dfv2omln6w3ho"]
+
+[ext_resource type="Script" path="res://enemy_2.gd" id="1_txhj4"]
+[ext_resource type="Texture2D" uid="uid://bdhyldlporumh" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy02/Run/Enemy02_Run_01.png" id="2_7bkvj"]
+[ext_resource type="Texture2D" uid="uid://bb6w3nnb2lf7i" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy02/Run/Enemy02_Run_02.png" id="3_hndni"]
+[ext_resource type="Texture2D" uid="uid://coihc708ahknm" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy02/Run/Enemy02_Run_03.png" id="4_y5uap"]
+[ext_resource type="Texture2D" uid="uid://cyloux4va11ag" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy02/Run/Enemy02_Run_04.png" id="5_qcrn1"]
+[ext_resource type="Texture2D" uid="uid://dhhv1hmkh4w83" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy02/Run/Enemy02_Run_05.png" id="6_y43pi"]
+[ext_resource type="Texture2D" uid="uid://qcmjwal1pboh" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy02/Run/Enemy02_Run_06.png" id="7_hjxb3"]
+[ext_resource type="Texture2D" uid="uid://6emcxyfjk3e8" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy02/Run/Enemy02_Run_07.png" id="8_551xp"]
+[ext_resource type="Texture2D" uid="uid://ck88a7nj6i0kw" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy02/Run/Enemy02_Run_08.png" id="9_s4rta"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8bqiy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7bkvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hndni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y5uap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qcrn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y43pi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hjxb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_551xp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s4rta")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63pe5"]
+size = Vector2(30, 230)
+
+[node name="enemy_2" type="CharacterBody2D"]
+script = ExtResource("1_txhj4")
+
+[node name="enemy_2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(5, -50)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_8bqiy")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_63pe5")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = 1.5708
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+rotation = -1.5708

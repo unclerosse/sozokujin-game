@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 80.0
+const SPEED = 200.0
 var direction = 1;
 const floor = Vector2(0,-1)
 

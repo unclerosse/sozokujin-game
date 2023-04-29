@@ -84,16 +84,14 @@ size = Vector2(40, 94)
 [node name="player" type="CharacterBody2D"]
 position = Vector2(121, 543)
 collision_layer = 4
-collision_mask = 15
+collision_mask = 10
 script = ExtResource("1_ncf7e")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(30, -30)
 scale = Vector2(5, 4.304)
 sprite_frames = SubResource("SpriteFrames_h7ywq")
-animation = &"idle"
-frame = 4
-frame_progress = 0.538542
+animation = &"run"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 scale = Vector2(4.70506, 4.05263)

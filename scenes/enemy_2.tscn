@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfv2omln6w3ho"]
+[gd_scene load_steps=12 format=3 uid="uid://dcage5tebolp2"]
 
-[ext_resource type="Script" path="res://enemy_2.gd" id="1_txhj4"]
+[ext_resource type="Script" path="res://scripts/enemy_2.gd" id="1_7i15x"]
 [ext_resource type="Texture2D" uid="uid://bdhyldlporumh" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy02/Run/Enemy02_Run_01.png" id="2_7bkvj"]
 [ext_resource type="Texture2D" uid="uid://bb6w3nnb2lf7i" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy02/Run/Enemy02_Run_02.png" id="3_hndni"]
 [ext_resource type="Texture2D" uid="uid://coihc708ahknm" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy02/Run/Enemy02_Run_03.png" id="4_y5uap"]
@@ -46,7 +46,10 @@ animations = [{
 size = Vector2(30, 230)
 
 [node name="enemy_2" type="CharacterBody2D"]
-script = ExtResource("1_txhj4")
+disable_mode = 2
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_7i15x")
 
 [node name="enemy_2" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -58,6 +61,7 @@ animation = &"run"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_63pe5")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 rotation = 1.5708

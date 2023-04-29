@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	$enemy.play("run")
+	
 func _process(delta):
 	
 	velocity.x = direction * SPEED
@@ -27,4 +28,3 @@ func _process(delta):
 		$enemy.flip_h = bool(1-direction)
 	velocity.y += gravity
 	move_and_slide()
-	

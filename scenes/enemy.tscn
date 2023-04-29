@@ -1,6 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://cv33gmij4e01"]
+[gd_scene load_steps=37 format=3 uid="uid://b4wtf0up8j35r"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_2iv6f"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_2iv6f"]
 [ext_resource type="Texture2D" uid="uid://yhjhp2mlfiwi" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy01/Idle/Enemy01_Idle_02.png" id="1_33mb2"]
 [ext_resource type="Texture2D" uid="uid://dkiifwad1ka0s" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy01/Idle/Enemy01_Idle_01.png" id="1_578b8"]
 [ext_resource type="Texture2D" uid="uid://mw3aphr12g1g" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy01/Idle/Enemy01_Idle_03.png" id="2_aowed"]
@@ -156,6 +156,8 @@ animations = [{
 size = Vector2(40, 133)
 
 [node name="enemy_1" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource("1_2iv6f")
 
 [node name="enemy" type="AnimatedSprite2D" parent="."]

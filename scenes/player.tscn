@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://cy4o7wfhmd2g4"]
+[gd_scene load_steps=20 format=3 uid="uid://dwnc6govgpma6"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_rw63v"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ncf7e"]
 [ext_resource type="Texture2D" uid="uid://dqls4twqaosfs" path="res://sprites/PackCharacterPixelArt09/Player/Idle/Player_Idle_01.png" id="2_rc7ql"]
 [ext_resource type="Texture2D" uid="uid://bf0gxq1l56q3v" path="res://sprites/PackCharacterPixelArt09/Player/Idle/Player_Idle_02.png" id="3_ltc5d"]
 [ext_resource type="Texture2D" uid="uid://tntkk0xkydoa" path="res://sprites/PackCharacterPixelArt09/Player/Idle/Player_Idle_03.png" id="4_p5bn5"]
@@ -83,7 +83,9 @@ size = Vector2(40, 94)
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(121, 543)
-script = ExtResource("1_rw63v")
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_ncf7e")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(30, -30)

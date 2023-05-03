@@ -156,8 +156,6 @@ animations = [{
 size = Vector2(40, 133)
 
 [node name="enemy_1" type="CharacterBody2D"]
-collision_layer = 8
-collision_mask = 2
 script = ExtResource("1_2iv6f")
 
 [node name="enemy" type="AnimatedSprite2D" parent="."]
@@ -171,4 +169,5 @@ animation = &"turn"
 shape = SubResource("RectangleShape2D_bty6u")
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
-position = Vector2(20, 28)
+position = Vector2(10, 28)
+exclude_parent = false

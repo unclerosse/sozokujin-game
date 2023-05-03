@@ -26,5 +26,5 @@ func _process(delta):
 		$RayCast2D2.position.x *= -1
 		#$enemy.play("turn")
 		$enemy.flip_h = bool(1-direction)
-	velocity.y += gravity
+	#velocity.y += gravity
 	move_and_slide()

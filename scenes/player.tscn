@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dwnc6govgpma6"]
+[gd_scene load_steps=20 format=3 uid="uid://b7n60oj700g63"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ncf7e"]
 [ext_resource type="Texture2D" uid="uid://dqls4twqaosfs" path="res://sprites/PackCharacterPixelArt09/Player/Idle/Player_Idle_01.png" id="2_rc7ql"]
@@ -82,9 +82,7 @@ size = Vector2(22, 20)
 size = Vector2(40, 94)
 
 [node name="player" type="CharacterBody2D"]
-position = Vector2(121, 543)
-collision_layer = 4
-collision_mask = 10
+platform_floor_layers = 0
 script = ExtResource("1_ncf7e")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -92,9 +90,10 @@ position = Vector2(30, -30)
 scale = Vector2(5, 4.304)
 sprite_frames = SubResource("SpriteFrames_h7ywq")
 animation = &"run"
+autoplay = "run"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-scale = Vector2(4.70506, 4.05263)
+scale = Vector2(4.028, 3.458)
 target_position = Vector2(0, 30)
 
 [node name="Camera2D" type="Camera2D" parent="."]

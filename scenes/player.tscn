@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://b7n60oj700g63"]
+[gd_scene load_steps=19 format=3 uid="uid://bbeigty2lmyas"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_ncf7e"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_gfr14"]
 [ext_resource type="Texture2D" uid="uid://dqls4twqaosfs" path="res://sprites/PackCharacterPixelArt09/Player/Idle/Player_Idle_01.png" id="2_rc7ql"]
 [ext_resource type="Texture2D" uid="uid://bf0gxq1l56q3v" path="res://sprites/PackCharacterPixelArt09/Player/Idle/Player_Idle_02.png" id="3_ltc5d"]
 [ext_resource type="Texture2D" uid="uid://tntkk0xkydoa" path="res://sprites/PackCharacterPixelArt09/Player/Idle/Player_Idle_03.png" id="4_p5bn5"]
@@ -46,7 +46,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -72,36 +72,35 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1j0k5"]
-size = Vector2(22, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blhae"]
+size = Vector2(38, 126)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgke7"]
-size = Vector2(40, 94)
-
-[node name="player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 4
 platform_floor_layers = 0
-script = ExtResource("1_ncf7e")
+script = ExtResource("1_gfr14")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(30, -30)
 scale = Vector2(5, 4.304)
 sprite_frames = SubResource("SpriteFrames_h7ywq")
-animation = &"run"
+animation = &"idle"
 autoplay = "run"
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-scale = Vector2(4.028, 3.458)
-target_position = Vector2(0, 30)
-
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 7.3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -28)
-shape = SubResource("RectangleShape2D_1j0k5")
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_blhae")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 30)
-shape = SubResource("RectangleShape2D_mgke7")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

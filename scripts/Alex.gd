@@ -1,36 +1,27 @@
 extends CharacterBody2D
 
 
-const SPEED = 450.0
-const JUMP_VELOCITY = -780.0 
+const SPEED = 120.0
+@onready var direction = 1
 
-var multiplier = 1.0
+# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-#var vel = Vector2()
-
-
+	
 func _physics_process(delta):
 	if not is_on_floor():
-		velocity.y += gravity * delta * 1.8
-
-	if Input.is_action_just_pressed("player_jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		
-	var direction = Input.get_axis("player_left", "player_right")
-	velocity.x = direction * SPEED * multiplier
+		velocity.y += gravity * delta * 1.5
 	
-	var right = Input.is_action_pressed("player_right")
-	var left = Input.is_action_pressed("player_left")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	if (right or left) and $Timer.time_left == 0:
-		$Timer.start()
-	elif $Timer.time_left != 0 and not (right or left):
-		multiplier = 1.0
-		$Timer.stop()
+	if is_on_wall():
+		direction *= -1
 		
 	move_and_slide()
 	animate()
-	
+
 func animate():
 	if velocity.x == 0:
 		$Sprite.play("idle")
@@ -52,8 +43,3 @@ func animate():
 		else:
 			$Sprite.flip_h = true
 			$Sprite.set_offset( Vector2(-12, 0) )
-
-
-func _on_Timer_timeout():
-	multiplier = 1.4
-	print(multiplier)

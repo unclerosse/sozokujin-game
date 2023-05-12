@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://cek2p1nw2vlwb"]
+
+[ext_resource type="Script" path="res://scripts/BasicEnemy.gd" id="1_uv0b4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8k7q4"]
+resource_local_to_scene = true
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack",
+"speed": 18.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"turn",
+"speed": 12.0
+}]
+
+[node name="BasicEnemy" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_uv0b4")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(408, 179)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_8k7q4")
+animation = &"hurt"
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="WeaponCollision" type="CollisionShape2D" parent="AttackArea"]
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+
+[node name="VisionArea" type="Area2D" parent="."]
+
+[node name="VisionCollision" type="CollisionShape2D" parent="VisionArea"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="VisionArea" to="." method="_on_VisionArea_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://b4wtf0up8j35r"]
+[gd_scene load_steps=37 format=3 uid="uid://d5dq2s2p7vqr"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_2iv6f"]
 [ext_resource type="Texture2D" uid="uid://yhjhp2mlfiwi" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy01/Idle/Enemy01_Idle_02.png" id="1_33mb2"]
 [ext_resource type="Texture2D" uid="uid://dkiifwad1ka0s" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy01/Idle/Enemy01_Idle_01.png" id="1_578b8"]
+[ext_resource type="Script" path="res://scripts/Alex.gd" id="1_oyyj3"]
 [ext_resource type="Texture2D" uid="uid://mw3aphr12g1g" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy01/Idle/Enemy01_Idle_03.png" id="2_aowed"]
 [ext_resource type="Texture2D" uid="uid://b4h3ohqh8d0kk" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy01/Idle/Enemy01_Idle_07.png" id="3_c1sve"]
 [ext_resource type="Texture2D" uid="uid://8shttst1q0hu" path="res://sprites/PackCharacterPixelArt09/Enemies/Enemy01/Idle/Enemy01_Idle_05.png" id="4_x7wjf"]
@@ -54,17 +54,17 @@ animations = [{
 "texture": ExtResource("4_x7wjf")
 }, {
 "duration": 1.0,
+"texture": ExtResource("5_hdimh")
+}, {
+"duration": 1.0,
 "texture": ExtResource("3_c1sve")
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_sgbdm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_hdimh")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -93,7 +93,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -149,25 +149,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"turn",
-"speed": 32.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bty6u"]
 size = Vector2(40, 133)
 
-[node name="enemy_1" type="CharacterBody2D"]
-script = ExtResource("1_2iv6f")
+[node name="Alex" type="CharacterBody2D"]
+collision_layer = 8
+platform_floor_layers = 4294901760
+script = ExtResource("1_oyyj3")
 
-[node name="enemy" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(30, -46)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_r071f")
 animation = &"turn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bty6u")
-
-[node name="RayCast2D2" type="RayCast2D" parent="."]
-position = Vector2(10, 28)
-exclude_parent = false

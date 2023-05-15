@@ -4,11 +4,19 @@ extends CharacterBody2D
 const SPEED = 450.0
 const JUMP_VELOCITY = -780.0 
 
+@onready var MaxHealth: int = 100
+@onready var CurrentHealth = MaxHealth
+
+var _Agility = 1
+var _Sanity = 1
+var _Power = 1
+
 var multiplier = 1.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #var vel = Vector2()
-
-
+func  _ready():
+	CurrentHealth = MaxHealth
+	
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta * 1.8
@@ -53,7 +61,38 @@ func animate():
 			$Sprite.flip_h = true
 			$Sprite.set_offset( Vector2(-12, 0) )
 
+func hurt(value):
+	var damage = value * MaxHealth * 0.01 * (1 - _Agility * 0.05)
+	CurrentHealth -= damage
+	print(damage)
+	if CurrentHealth <= 0:
+		pass
 
+func getPlayerLevel():
+	return _Agility + _Power + _Sanity
+
+func increaseAgility():
+	if getPlayerLevel() <= 16:
+		_Agility += 1
+		MaxHealth *= 1 + (getPlayerLevel() - 3) * 0.1 + (_Power - 1) * 0.15
+
+func increasePower():
+	if getPlayerLevel() <= 16:
+		_Power += 1
+		MaxHealth *= 1 + (getPlayerLevel() - 3) * 0.1 + (_Power - 1) * 0.15
+
+func increaseSanity():
+	if getPlayerLevel() <= 16:
+		_Sanity += 1
+		MaxHealth *= 1 + (getPlayerLevel() - 3) * 0.1 + (_Power - 1) * 0.15
+	
+	
 func _on_Timer_timeout():
-	multiplier = 1.4
-	print(multiplier)
+	if _Agility <= 2:
+		multiplier = 1 + _Agility * 0.1
+	elif _Agility <= 6:
+		multiplier = 1.1 + _Agility * 0.05
+	else:
+		multiplier = 1.4
+
+	

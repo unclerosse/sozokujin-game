@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bbeigty2lmyas"]
+[gd_scene load_steps=20 format=3 uid="uid://bbeigty2lmyas"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_gfr14"]
 [ext_resource type="Texture2D" uid="uid://dqls4twqaosfs" path="res://sprites/PackCharacterPixelArt09/Player/Idle/Player_Idle_01.png" id="2_rc7ql"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://do1tqjgqi5qpr" path="res://sprites/PackCharacterPixelArt09/Player/Run/Player_Run_05.png" id="14_ybbb1"]
 [ext_resource type="Texture2D" uid="uid://4ani8bbk66ln" path="res://sprites/PackCharacterPixelArt09/Player/Run/Player_Run_06.png" id="15_sfxnx"]
 [ext_resource type="Texture2D" uid="uid://d0ou7mmjgwuw" path="res://sprites/PackCharacterPixelArt09/Player/Run/Player_Run_07.png" id="16_hmebn"]
+[ext_resource type="Texture2D" uid="uid://cy47ksyptvvva" path="res://sprites/bar-transformed.png" id="17_4r1fb"]
 [ext_resource type="Texture2D" uid="uid://bnfgesbt8fn3t" path="res://sprites/PackCharacterPixelArt09/Player/Run/Player_Run_08.png" id="17_201wb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h7ywq"]
@@ -94,6 +95,7 @@ autoplay = "run"
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 7.3
+rotation_smoothing_speed = 7.0
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 15)
@@ -102,5 +104,14 @@ shape = SubResource("RectangleShape2D_blhae")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.5
 one_shot = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -574.0
+offset_top = -320.0
+offset_right = -134.0
+offset_bottom = -280.0
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("17_4r1fb")
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

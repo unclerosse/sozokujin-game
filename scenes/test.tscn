@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnsu0uh2qhog0"]
+
+[ext_resource type="Texture2D" uid="uid://cr1x3yp7qloq6" path="res://sprites/PackCharacterPixelArt09/Environments/Trees/TreeBack01.png" id="1_yxikp"]
+[ext_resource type="Texture2D" uid="uid://bqtjcslt48ydp" path="res://sprites/PackCharacterPixelArt09/Environments/Trees/TreeBack03.png" id="2_n0vum"]
+
+[node name="test" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_yxikp")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("1_yxikp")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("1_yxikp")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(160, 0)
+texture = ExtResource("1_yxikp")
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource("2_n0vum")
+centered = false
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
+position = Vector2(80, 0)
+texture = ExtResource("1_yxikp")
+centered = false

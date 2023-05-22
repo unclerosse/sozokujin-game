@@ -1,0 +1,127 @@
+[gd_scene load_steps=12 format=3 uid="uid://mdmeptcpvnnv"]
+
+[ext_resource type="Texture2D" uid="uid://r1ocvkjpvur8" path="res://sprites/hp_backt.png" id="1_e7s2x"]
+[ext_resource type="Script" path="res://scripts/hp_bar.gd" id="1_u8jk8"]
+[ext_resource type="Texture2D" uid="uid://c43du4qtbpbl5" path="res://sprites/hp_out.png" id="2_sb2u3"]
+[ext_resource type="Texture2D" uid="uid://b4v0egslk2bab" path="res://sprites/hp_in.png" id="3_oy4r4"]
+[ext_resource type="Texture2D" uid="uid://d3mkwxisckunw" path="res://sprites/hit (4).png" id="4_vm731"]
+[ext_resource type="Texture2D" uid="uid://bhlxs570y3mgp" path="res://sprites/ab.png" id="5_4yvai"]
+[ext_resource type="Texture2D" uid="uid://pus31b3gjw5g" path="res://sprites/pow.png" id="6_b04q7"]
+[ext_resource type="Texture2D" uid="uid://ei4yt5d46ug3" path="res://sprites/s.png" id="7_fns0q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wtbg6"]
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5rr4k"]
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mlkam"]
+font_color = Color(0, 0, 0.905882, 1)
+
+[node name="Interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u8jk8")
+
+[node name="hp_bar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 416.0
+offset_bottom = 32.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("1_e7s2x")
+texture_over = ExtResource("2_sb2u3")
+texture_progress = ExtResource("3_oy4r4")
+
+[node name="Current" type="Label" parent="hp_bar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -13.0
+offset_right = 20.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10"
+
+[node name="Hit" type="Sprite2D" parent="."]
+position = Vector2(56, -64)
+texture = ExtResource("4_vm731")
+
+[node name="Ab" type="Sprite2D" parent="."]
+position = Vector2(160, -64)
+texture = ExtResource("5_4yvai")
+
+[node name="val_ab" type="Label" parent="Ab"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -78.0
+offset_right = -25.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_wtbg6")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Pow" type="Sprite2D" parent="."]
+position = Vector2(264, -64)
+texture = ExtResource("6_b04q7")
+
+[node name="val_pow" type="Label" parent="Pow"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -78.0
+offset_right = -25.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_5rr4k")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="S" type="Sprite2D" parent="."]
+position = Vector2(368, -64)
+texture = ExtResource("7_fns0q")
+
+[node name="val_s" type="Label" parent="S"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -81.0
+offset_right = -25.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_mlkam")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="value_changed" from="hp_bar" to="." method="_on_hp_bar_value_changed"]

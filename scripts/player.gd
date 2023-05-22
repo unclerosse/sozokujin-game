@@ -95,4 +95,4 @@ func _on_Timer_timeout():
 	else:
 		multiplier = 1.4
 
-	
+

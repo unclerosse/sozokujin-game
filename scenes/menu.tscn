@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://474p840l6q1p"]
+
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="1_jcnqs"]
+[ext_resource type="Texture2D" uid="uid://c5wvysd0pqkq" path="res://sprites/gr463_1152_649.png" id="2_v0p6d"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jcnqs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -121.0
+offset_right = 117.0
+offset_bottom = -20.0
+grow_vertical = 0
+
+[node name="start_butt" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../quit_butt")
+text = "New Game"
+
+[node name="option_butt" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="quit_butt" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../start_butt")
+text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v0p6d")
+
+[connection signal="pressed" from="VBoxContainer/start_butt" to="." method="_on_start_butt_pressed"]
+[connection signal="pressed" from="VBoxContainer/option_butt" to="." method="_on_option_butt_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit_butt" to="." method="_on_quit_butt_pressed"]

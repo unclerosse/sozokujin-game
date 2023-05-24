@@ -18,12 +18,18 @@ var Body: CollisionShape2D
 var Weapon: Area2D
 var Sprite: AnimatedSprite2D
 var Vision: Area2D
+var Raycast: RayCast2D
+
+var Target = null
+
+var Cooldown = false
 
 func _ready():
 	Body = $BodyCollision
 	Weapon = $AttackArea
 	Sprite = $Sprite
 	Vision = $VisionArea
+	Raycast = $RayCast2D
 	
 	Sprite.play("idle") 
 
@@ -55,9 +61,18 @@ func hurt(value):
 	CurrentHealth -= value + (value * Armor * 0.01)
 	if CurrentHealth <= 0:
 		CurrentStatus = -1
-
+		
 func _on_VisionArea_body_entered(body):
-	pass 
+	if body.name == "player":
+		Target = body
+		CurrentStatus = 1
+		
+func _on_vision_area_body_exited(body):
+	if body.name == "player":
+		Target = null
+		CurrentStatus = 0
+		
 
 func _on_timer_timeout():
 	pass
+

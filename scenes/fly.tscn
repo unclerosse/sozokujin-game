@@ -1,0 +1,86 @@
+[gd_scene load_steps=15 format=3 uid="uid://bp1gxnswichdo"]
+
+[ext_resource type="PackedScene" uid="uid://cek2p1nw2vlwb" path="res://scenes/BasicEnemy.tscn" id="1_nydoi"]
+[ext_resource type="Script" path="res://scripts/fly.gd" id="2_lpr12"]
+[ext_resource type="Texture2D" uid="uid://buurcv00tbujg" path="res://sprites/Enemy02/Fly/Enemy02_Fly_01.png" id="14_h68sk"]
+[ext_resource type="Texture2D" uid="uid://b6d3e4t2rjec" path="res://sprites/Enemy02/Fly/Enemy02_Fly_02.png" id="15_ks4v1"]
+[ext_resource type="Texture2D" uid="uid://c8qgqiekdau1g" path="res://sprites/Enemy02/Fly/Enemy02_Fly_03.png" id="16_5vriv"]
+[ext_resource type="Texture2D" uid="uid://buxjek82bhcpl" path="res://sprites/Enemy02/Fly/Enemy02_Fly_04.png" id="17_sxtjr"]
+[ext_resource type="Texture2D" uid="uid://boodspy4qforg" path="res://sprites/Enemy02/Fly/Enemy02_Fly_05.png" id="18_fmoy0"]
+[ext_resource type="Texture2D" uid="uid://dxryey4uan6qy" path="res://sprites/Enemy02/Fly/Enemy02_Fly_06.png" id="19_q3ugj"]
+[ext_resource type="Texture2D" uid="uid://ied7t4bnf0a2" path="res://sprites/Enemy02/Fly/Enemy02_Fly_07.png" id="20_78ahu"]
+[ext_resource type="Texture2D" uid="uid://5g8u3xo7qain" path="res://sprites/Enemy02/Fly/Enemy02_Fly_08.png" id="21_beqdn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ox8lk"]
+resource_local_to_scene = true
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_h68sk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ks4v1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5vriv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_sxtjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_fmoy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_q3ugj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_78ahu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_beqdn")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0pty"]
+radius = 48.6621
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xre6g"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7x6tq"]
+radius = 300.0
+
+[node name="Fly" instance=ExtResource("1_nydoi")]
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("2_lpr12")
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(-4.76837e-07, -4.76837e-07)
+sprite_frames = SubResource("SpriteFrames_ox8lk")
+animation = &"fly"
+
+[node name="AttackArea" parent="." index="1"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="WeaponCollision" parent="AttackArea" index="0"]
+shape = SubResource("CircleShape2D_n0pty")
+
+[node name="BodyCollision" parent="." index="2"]
+shape = SubResource("CircleShape2D_xre6g")
+
+[node name="VisionArea" parent="." index="3"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="VisionCollision" parent="VisionArea" index="0"]
+shape = SubResource("CircleShape2D_7x6tq")

@@ -40,26 +40,23 @@ func _physics_process(delta):
 	animate()
 	
 func animate():
-	if velocity.x == 0:
+	if velocity.x == 0 and velocity.y == 0:
 		$Sprite.play("idle")
 	
 	elif velocity.y == 0 and is_on_floor() and velocity.x != 0:
 		$Sprite.play("run")
 		if velocity.x > 0:
 			$Sprite.flip_h = false
-			$Sprite.set_offset( Vector2(0, 0) )
 		else:
 			$Sprite.flip_h = true
-			$Sprite.set_offset( Vector2(-12, 0) )
 	
 	elif velocity.y != 0:
-		$Sprite.play("idle")
+		$Sprite.play("jump")
 		if velocity.x > 0:
 			$Sprite.flip_h = false
-			$Sprite.set_offset( Vector2(0, 0) )
 		else:
 			$Sprite.flip_h = true
-			$Sprite.set_offset( Vector2(-12, 0) )
+
 
 func hurt(value):
 	var damage = value * MaxHealth * 0.01 * (1 - _Agility * 0.05)
@@ -94,5 +91,3 @@ func _on_Timer_timeout():
 		multiplier = 1.1 + _Agility * 0.05
 	else:
 		multiplier = 1.4
-
-

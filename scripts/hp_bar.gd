@@ -1,7 +1,7 @@
 extends Control
 
-var hp = 1000
-var max_hp = 1000
+var hp = 100
+var max_hp = 100
 var val_pow = str(1)
 var val_ab = str(1)
 var val_s = str(1)

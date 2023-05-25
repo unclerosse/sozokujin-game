@@ -81,7 +81,7 @@ func ChangeHealth(value):
 			_CurrentHealth = 1
 			_HasSecondLife = false
 		else: 
-			_CurrentHealth = 0			
+			get_tree().quit()
 	elif _CurrentHealth + value <= _MaxHealth:
 		_CurrentHealth += value
 	else:

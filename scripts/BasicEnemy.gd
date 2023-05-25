@@ -11,10 +11,10 @@ var Speed = 100.0
 var Cooldown = true
 
 
-@onready var Direction = 1
+var Direction = 1
 
 # Existing statuses: 0 - idle, 1 - search, 2 - attack, -1 - death
-@onready var CurrentStatus = 0
+var CurrentStatus = 0
 
 var Body: CollisionShape2D
 var Weapon: Area2D
@@ -39,7 +39,7 @@ func _ready():
 
 func _physics_process(delta):
 	if CurrentStatus == 0: # idle
-		idle()
+		idle(delta)
 	elif CurrentStatus == 1: # search
 		search()
 	elif CurrentStatus == 2: # attack
@@ -47,7 +47,7 @@ func _physics_process(delta):
 	else:
 		death()
 		
-func idle():
+func idle(delta):
 	Sprite.play("idle")
 	
 func search():

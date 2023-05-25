@@ -30,9 +30,8 @@ func search():
 func _on_vision_area_body_exited(body):
 	pass
 
-func idle():
-	pass
-
+func idle(delta):
+	velocity.x = Speed * 0.8
 
 func _on_attack_area_body_entered(body):
 	if body.name != "player":

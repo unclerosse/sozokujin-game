@@ -81,7 +81,7 @@ func ChangeHealth(value):
 			_CurrentHealth = 1
 			_HasSecondLife = false
 		else: 
-			get_tree().quit()
+			get_tree().change_scene_to_file("res://scenes/death.tscn")
 	elif _CurrentHealth + value <= _MaxHealth:
 		_CurrentHealth += value
 	else:
@@ -115,3 +115,7 @@ func _on_Timer_timeout():
 		multiplier = 1.1 + _Agility * 0.05
 	else:
 		multiplier = 1.4
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel"):
+		$esc_menu.pause()

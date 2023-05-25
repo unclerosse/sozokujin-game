@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0uunmuovvwxi"]
 
 [ext_resource type="PackedScene" uid="uid://bp1gxnswichdo" path="res://scenes/fly.tscn" id="1_ndk2i"]
-[ext_resource type="AudioStream" uid="uid://cq7srx6heemtd" path="res://resources/sozokujin.mp3" id="1_yumt4"]
+[ext_resource type="AudioStream" uid="uid://cnothyxihluje" path="res://resources/sozokujin.mp3" id="1_yumt4"]
 [ext_resource type="PackedScene" uid="uid://bbeigty2lmyas" path="res://scenes/player.tscn" id="2_07kpe"]
 [ext_resource type="PackedScene" uid="uid://bw7swc3s4vnoa" path="res://scenes/tile_map.tscn" id="3_4ycy0"]
 [ext_resource type="PackedScene" uid="uid://cek2p1nw2vlwb" path="res://scenes/BasicEnemy.tscn" id="4_lk7xc"]

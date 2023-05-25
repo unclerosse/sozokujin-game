@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://ebs5c24tobud"]
+
+[ext_resource type="Script" path="res://scripts/coming_soon.gd" id="1_vr4ru"]
+[ext_resource type="Texture2D" uid="uid://c5wvysd0pqkq" path="res://sprites/gr463_1152_649.png" id="2_7nwua"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wsmjw"]
+font_size = 65
+font_color = Color(1, 0, 0, 1)
+
+[node name="Coming_soon" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vr4ru")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "You are dead"
+label_settings = SubResource("LabelSettings_wsmjw")
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Play again"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Back to main menu"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7nwua")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

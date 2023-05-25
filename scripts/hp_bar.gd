@@ -11,7 +11,7 @@ var txt_max_hp = str(max_hp)
 func set_hp(hp,max_hp):
 	$hp_bar.value = hp
 	$hp_bar.max_value = max_hp
-	$hp_bar/Current.text = txt_hp + "/"+txt_max_hp
+	$hp_bar/Current.text = str(hp) + "/" + str(max_hp)
 	$Ab/val_ab.text = val_ab
 	$Pow/val_pow.text = val_pow
 	$S/val_s.text = val_s

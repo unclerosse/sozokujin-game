@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://bbeigty2lmyas"]
+[gd_scene load_steps=105 format=3 uid="uid://bbeigty2lmyas"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_gfr14"]
 [ext_resource type="Texture2D" uid="uid://b5jyqo2m034af" path="res://sprites/Player/Idle/Player_Idle_01.png" id="2_fidbc"]
@@ -81,7 +81,9 @@
 [ext_resource type="Texture2D" uid="uid://g2pnp3nwc0tp" path="res://sprites/Player/Death/Player_Death_18.png" id="55_clb7i"]
 [ext_resource type="Texture2D" uid="uid://e0fln14tiind" path="res://sprites/Player/Death/Player_Death_19.png" id="56_mbvsp"]
 [ext_resource type="Texture2D" uid="uid://duta6p72edxks" path="res://sprites/Player/Hit/Player_Hit_01.png" id="57_usakr"]
+[ext_resource type="Texture2D" uid="uid://dvkr7uh75wqtn" path="res://sprites/Player/Jump/Player_Jump_11.png" id="58_4oscx"]
 [ext_resource type="Texture2D" uid="uid://73uobxm6e00b" path="res://sprites/Player/Hit/Player_Hit_02.png" id="58_f6v0c"]
+[ext_resource type="Texture2D" uid="uid://cx8p5dq5c3435" path="res://sprites/Player/Jump/Player_Jump_12.png" id="59_5j78c"]
 [ext_resource type="Texture2D" uid="uid://cf1j2x17y524s" path="res://sprites/Player/Hit/Player_Hit_03.png" id="59_ivlf8"]
 [ext_resource type="Texture2D" uid="uid://cxs73k1xgjsm" path="res://sprites/Player/Hit/Player_Hit_04.png" id="60_tdskc"]
 [ext_resource type="Texture2D" uid="uid://bkr70v4t5n8si" path="res://sprites/Player/Hit/Player_Hit_05.png" id="61_1xuyv"]
@@ -98,11 +100,11 @@
 [ext_resource type="Texture2D" uid="uid://djop1l8orlo5" path="res://sprites/Player/Power/Player_Power_09.png" id="92_677au"]
 [ext_resource type="Texture2D" uid="uid://cyivj8oakn0cb" path="res://sprites/Player/Power/Player_Power_10.png" id="93_g544b"]
 
-[sub_resource type="Animation" id="Animation_86tf6"]
-resource_name = "light_attack"
-
 [sub_resource type="Animation" id="Animation_14hj3"]
 length = 0.001
+
+[sub_resource type="Animation" id="Animation_86tf6"]
+resource_name = "light_attack"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jh4on"]
 _data = {
@@ -299,6 +301,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("19_fsfmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_4oscx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_5j78c")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("57_usakr")
 }, {
 "duration": 1.0,
@@ -370,9 +386,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("18_7el1o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_fsfmc")
 }],
 "loop": true,
 "name": &"jump",
@@ -462,8 +475,7 @@ texture_filter = 1
 position = Vector2(1.90735e-06, -1.90735e-06)
 scale = Vector2(5, 4.304)
 sprite_frames = SubResource("SpriteFrames_h7ywq")
-animation = &"idle"
-frame_progress = 0.0841452
+animation = &"run"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_speed = 7.3

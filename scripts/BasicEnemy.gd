@@ -8,6 +8,8 @@ var CurrentHealth = MaxHealth
 var Armor = 0.0
 var Damage = 100.0
 var Speed = 100.0
+var Cooldown = true
+
 
 @onready var Direction = 1
 
@@ -19,10 +21,10 @@ var Weapon: Area2D
 var Sprite: AnimatedSprite2D
 var Vision: Area2D
 var Raycast: RayCast2D
+var EnemyTimer: Timer
 
 var Target = null
 
-var Cooldown = false
 
 func _ready():
 	Body = $BodyCollision
@@ -30,7 +32,9 @@ func _ready():
 	Sprite = $Sprite
 	Vision = $VisionArea
 	Raycast = $RayCast2D
+	EnemyTimer = $EnemyTimer
 	
+	print(EnemyTimer)
 	Sprite.play("idle") 
 
 func _physics_process(delta):

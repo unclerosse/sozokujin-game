@@ -26,7 +26,7 @@ position = Vector2(-130, 260)
 position = Vector2(384, 155)
 
 [node name="player" parent="." instance=ExtResource("2_07kpe")]
-position = Vector2(377, 495)
+position = Vector2(1426, -89)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="player"]
 stream = ExtResource("1_yumt4")

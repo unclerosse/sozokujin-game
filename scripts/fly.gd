@@ -7,13 +7,14 @@ func is_right(value: float) -> bool:
 
 
 func _ready():
-	Speed = 450.0
+	Speed = 420.0
 	MaxHealth = 60.0
 	CurrentHealth = MaxHealth
 	Damage = 30.0
 	
 	Sprite = $Sprite
 	Vision = $VisionArea
+	EnemyTimer = $EnemyTimer
 	
 	Sprite.play("fly")
 
@@ -24,7 +25,6 @@ func search():
 	
 	Sprite.flip_h = is_right(direction.x)
 
-	
 	move_and_slide()
 
 func _on_vision_area_body_exited(body):
@@ -32,3 +32,12 @@ func _on_vision_area_body_exited(body):
 
 func idle():
 	pass
+
+
+func _on_attack_area_body_entered(body):
+	if body.name != "player":
+		return
+	body.hurt(Damage)
+		
+func _on_timer_timeout():
+	Cooldown = false

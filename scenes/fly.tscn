@@ -70,7 +70,7 @@ animation = &"fly"
 
 [node name="AttackArea" parent="." index="1"]
 collision_layer = 8
-collision_mask = 0
+collision_mask = 4
 
 [node name="WeaponCollision" parent="AttackArea" index="0"]
 shape = SubResource("CircleShape2D_n0pty")
@@ -84,3 +84,5 @@ collision_mask = 4
 
 [node name="VisionCollision" parent="VisionArea" index="0"]
 shape = SubResource("CircleShape2D_7x6tq")
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

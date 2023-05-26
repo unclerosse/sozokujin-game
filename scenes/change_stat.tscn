@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck5o4bkhgjsv0"]
+
+[ext_resource type="Shader" path="res://ecs_menu.gdshader" id="1_yw1u6"]
+[ext_resource type="Script" path="res://scripts/esc_menu.gd" id="2_a7hva"]
+[ext_resource type="Texture2D" uid="uid://b4c50t4anl755" path="res://sprites/ab.png" id="3_hiy4x"]
+[ext_resource type="Texture2D" uid="uid://bsat6wu8mai80" path="res://sprites/pow.png" id="4_jc1yr"]
+[ext_resource type="Texture2D" uid="uid://djpu7j80hbdy7" path="res://sprites/s.png" id="5_vx6aa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_553xs"]
+shader = ExtResource("1_yw1u6")
+shader_parameter/blur = 1.095
+shader_parameter/brightness = 0.067
+
+[node name="ColorRect" type="ColorRect"]
+process_mode = 3
+material = SubResource("ShaderMaterial_553xs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_a7hva")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="A" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "
+
+
+
++1"
+icon = ExtResource("3_hiy4x")
+icon_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="P" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "
+
+
+
++1"
+icon = ExtResource("4_jc1yr")
+icon_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="S" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "
+
+
+
++1"
+icon = ExtResource("5_vx6aa")
+icon_alignment = 1

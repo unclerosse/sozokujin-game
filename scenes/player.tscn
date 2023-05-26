@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://bbeigty2lmyas"]
+[gd_scene load_steps=107 format=3 uid="uid://bbeigty2lmyas"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_gfr14"]
 [ext_resource type="Texture2D" uid="uid://bd0jl0eao77xx" path="res://sprites/Player/Idle/Player_Idle_01.png" id="2_fidbc"]
@@ -100,6 +100,7 @@
 [ext_resource type="Texture2D" uid="uid://b2b0jpaf4fnv2" path="res://sprites/Player/Power/Player_Power_09.png" id="92_677au"]
 [ext_resource type="Texture2D" uid="uid://btsim18ltttiq" path="res://sprites/Player/Power/Player_Power_10.png" id="93_g544b"]
 [ext_resource type="PackedScene" uid="uid://c8f83qj0uiq34" path="res://scenes/esc_menu.tscn" id="100_6yfgf"]
+[ext_resource type="PackedScene" uid="uid://ck5o4bkhgjsv0" path="res://scenes/change_stat.tscn" id="101_hjax3"]
 
 [sub_resource type="Animation" id="Animation_14hj3"]
 length = 0.001
@@ -497,5 +498,7 @@ offset_right = -584.0
 offset_bottom = 288.0
 
 [node name="esc_menu" parent="." instance=ExtResource("100_6yfgf")]
+
+[node name="ColorRect" parent="." instance=ExtResource("101_hjax3")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

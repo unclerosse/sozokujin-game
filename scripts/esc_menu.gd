@@ -27,6 +27,3 @@ func _on_quit_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
-func _unhandled_input(event):
-	if event.is_action_pressed("ui_cancel") and flag == 1:
-		unpause()

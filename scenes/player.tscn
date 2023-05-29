@@ -498,7 +498,9 @@ offset_right = -584.0
 offset_bottom = 288.0
 
 [node name="esc_menu" parent="." instance=ExtResource("100_6yfgf")]
+visible = false
 
 [node name="ColorRect" parent="." instance=ExtResource("101_hjax3")]
+visible = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

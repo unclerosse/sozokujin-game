@@ -8,7 +8,7 @@ var CurrentHealth = MaxHealth
 var Armor = 0.0
 var Damage = 100.0
 var Speed = 100.0
-var Cooldown = true
+var Cooldown = false
 
 
 var Direction = 1

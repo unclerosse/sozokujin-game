@@ -30,7 +30,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	var text = "FPS: " + str(Engine.get_frames_per_second())
+	$FPS.text = text
 
 
 func _on_hp_bar_value_changed(value):

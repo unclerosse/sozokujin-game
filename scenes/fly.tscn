@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://cek2p1nw2vlwb" path="res://scenes/BasicEnemy.tscn" id="1_nydoi"]
 [ext_resource type="Script" path="res://scripts/fly.gd" id="2_lpr12"]
-[ext_resource type="Texture2D" uid="uid://buurcv00tbujg" path="res://sprites/Enemy02/Fly/Enemy02_Fly_01.png" id="14_h68sk"]
-[ext_resource type="Texture2D" uid="uid://b6d3e4t2rjec" path="res://sprites/Enemy02/Fly/Enemy02_Fly_02.png" id="15_ks4v1"]
-[ext_resource type="Texture2D" uid="uid://c8qgqiekdau1g" path="res://sprites/Enemy02/Fly/Enemy02_Fly_03.png" id="16_5vriv"]
-[ext_resource type="Texture2D" uid="uid://buxjek82bhcpl" path="res://sprites/Enemy02/Fly/Enemy02_Fly_04.png" id="17_sxtjr"]
-[ext_resource type="Texture2D" uid="uid://boodspy4qforg" path="res://sprites/Enemy02/Fly/Enemy02_Fly_05.png" id="18_fmoy0"]
-[ext_resource type="Texture2D" uid="uid://dxryey4uan6qy" path="res://sprites/Enemy02/Fly/Enemy02_Fly_06.png" id="19_q3ugj"]
-[ext_resource type="Texture2D" uid="uid://ied7t4bnf0a2" path="res://sprites/Enemy02/Fly/Enemy02_Fly_07.png" id="20_78ahu"]
-[ext_resource type="Texture2D" uid="uid://5g8u3xo7qain" path="res://sprites/Enemy02/Fly/Enemy02_Fly_08.png" id="21_beqdn"]
+[ext_resource type="Texture2D" uid="uid://55ubhqvdw7gc" path="res://sprites/Enemy02/Fly/Enemy02_Fly_01.png" id="14_h68sk"]
+[ext_resource type="Texture2D" uid="uid://bb0f4f8bep3u5" path="res://sprites/Enemy02/Fly/Enemy02_Fly_02.png" id="15_ks4v1"]
+[ext_resource type="Texture2D" uid="uid://dt78qg4xtib5b" path="res://sprites/Enemy02/Fly/Enemy02_Fly_03.png" id="16_5vriv"]
+[ext_resource type="Texture2D" uid="uid://b3mwyrcspo54s" path="res://sprites/Enemy02/Fly/Enemy02_Fly_04.png" id="17_sxtjr"]
+[ext_resource type="Texture2D" uid="uid://c0hb6y7b2hhij" path="res://sprites/Enemy02/Fly/Enemy02_Fly_05.png" id="18_fmoy0"]
+[ext_resource type="Texture2D" uid="uid://d1qiji368pavb" path="res://sprites/Enemy02/Fly/Enemy02_Fly_06.png" id="19_q3ugj"]
+[ext_resource type="Texture2D" uid="uid://c67llloyrujxf" path="res://sprites/Enemy02/Fly/Enemy02_Fly_07.png" id="20_78ahu"]
+[ext_resource type="Texture2D" uid="uid://4fr5h1c1pol2" path="res://sprites/Enemy02/Fly/Enemy02_Fly_08.png" id="21_beqdn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ox8lk"]
 resource_local_to_scene = true
@@ -59,6 +59,7 @@ radius = 32.0
 radius = 300.0
 
 [node name="Fly" instance=ExtResource("1_nydoi")]
+position = Vector2(595, 371)
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("2_lpr12")
@@ -84,5 +85,8 @@ collision_mask = 4
 
 [node name="VisionCollision" parent="VisionArea" index="0"]
 shape = SubResource("CircleShape2D_7x6tq")
+
+[node name="EnemyTimer" parent="." index="4"]
+one_shot = false
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

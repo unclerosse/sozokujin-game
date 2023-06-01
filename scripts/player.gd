@@ -19,12 +19,16 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var Sprite: AnimatedSprite2D
 var HUD: Control
 var PlayerTimer: Timer
+var Animator: AnimationTree
+var StateMachine
 
 func  _ready():
 	Sprite = $Sprite
 	HUD = $HUD
 	PlayerTimer = $Timer
-	
+	Animator = $AnimationTree
+	StateMachine = Animator.get("parameters/playback")
+		
 func _physics_process(delta):
 	if Input.is_action_just_pressed("player_jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -50,31 +54,30 @@ func _physics_process(delta):
 		PlayerTimer.stop()
 	
 	move_and_slide()
-	animate()
-	
+	animate()	
+
+
 func animate():
 	if velocity.x > 0:
 		Sprite.flip_h = false
 	elif velocity.x < 0: 
 		Sprite.flip_h = true
-	else:
-		pass
-		
-	if velocity.y < 0:
-		Sprite.play("jump")
-	elif velocity.y > 0:
-		Sprite.play("fall")
-	elif velocity.x == 0:
-		Sprite.play("idle")
-
-	if abs(velocity.x) > 0 and is_on_floor():
-		Sprite.play("run")
+	
+	if velocity == Vector2.ZERO:
+		Animator["parameters/conditions/idle"] = true
+		Animator["parameters/conditions/is_moving"] = false
+	elif abs(velocity.x) > 0 and is_on_floor():
+		Animator["parameters/conditions/idle"] = false
+		Animator["parameters/conditions/is_moving"] = true
+	
 
 func hurt(value):
 	var damage = int(value * _MaxHealth * 0.01 * (1 - _Agility * 0.05))
-	print(damage)
+	if value == 1:
+		ChangeHealth(-1)
 	ChangeHealth(-damage)
-
+	
+	
 func ChangeHealth(value):
 	if _CurrentHealth + value <= 0:
 		if _HasSecondLife:
@@ -86,6 +89,8 @@ func ChangeHealth(value):
 		_CurrentHealth += value
 	else:
 		_CurrentHealth = _MaxHealth
+		_HasSecondLife = true
+		
 		
 	HUD.set_hp(_CurrentHealth, _MaxHealth)
 

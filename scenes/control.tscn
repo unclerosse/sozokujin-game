@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://mdmeptcpvnnv"]
 
-[ext_resource type="Texture2D" uid="uid://b8qamiuqts1oc" path="res://sprites/hp_backt.png" id="1_e7s2x"]
+[ext_resource type="Texture2D" uid="uid://di0611yxd53kl" path="res://sprites/hp_backt.png" id="1_e7s2x"]
 [ext_resource type="Script" path="res://scripts/hp_bar.gd" id="1_u8jk8"]
-[ext_resource type="Texture2D" uid="uid://b5c6yex1so4ov" path="res://sprites/hp_out.png" id="2_sb2u3"]
-[ext_resource type="Texture2D" uid="uid://nei184q1ulj2" path="res://sprites/hp_in.png" id="3_oy4r4"]
-[ext_resource type="Texture2D" uid="uid://cywbahqpv3u1i" path="res://sprites/hit (4).png" id="4_vm731"]
-[ext_resource type="Texture2D" uid="uid://b4c50t4anl755" path="res://sprites/ab.png" id="5_4yvai"]
-[ext_resource type="Texture2D" uid="uid://bsat6wu8mai80" path="res://sprites/pow.png" id="6_b04q7"]
-[ext_resource type="Texture2D" uid="uid://djpu7j80hbdy7" path="res://sprites/s.png" id="7_fns0q"]
+[ext_resource type="Texture2D" uid="uid://bxqa61bb18bb0" path="res://sprites/hp_out.png" id="2_sb2u3"]
+[ext_resource type="Texture2D" uid="uid://dsbfy614vb5py" path="res://sprites/hp_in.png" id="3_oy4r4"]
+[ext_resource type="Texture2D" uid="uid://dyp83vtb0tlyf" path="res://sprites/hit (4).png" id="4_vm731"]
+[ext_resource type="Texture2D" uid="uid://fpyasmlftjkm" path="res://sprites/ab.png" id="5_4yvai"]
+[ext_resource type="Texture2D" uid="uid://ds6t2fh37ucut" path="res://sprites/pow.png" id="6_b04q7"]
+[ext_resource type="Texture2D" uid="uid://dvlkslam3t0t6" path="res://sprites/s.png" id="7_fns0q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wtbg6"]
 font_color = Color(0, 1, 0, 1)
@@ -124,5 +124,12 @@ text = "1"
 label_settings = SubResource("LabelSettings_mlkam")
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="FPS" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -613.0
+offset_right = 58.0
+offset_bottom = -590.0
 
 [connection signal="value_changed" from="hp_bar" to="." method="_on_hp_bar_value_changed"]

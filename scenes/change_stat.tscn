@@ -2,9 +2,9 @@
 
 [ext_resource type="Shader" path="res://ecs_menu.gdshader" id="1_yw1u6"]
 [ext_resource type="Script" path="res://scripts/esc_menu.gd" id="2_a7hva"]
-[ext_resource type="Texture2D" uid="uid://b4c50t4anl755" path="res://sprites/ab.png" id="3_hiy4x"]
-[ext_resource type="Texture2D" uid="uid://bsat6wu8mai80" path="res://sprites/pow.png" id="4_jc1yr"]
-[ext_resource type="Texture2D" uid="uid://djpu7j80hbdy7" path="res://sprites/s.png" id="5_vx6aa"]
+[ext_resource type="Texture2D" uid="uid://fpyasmlftjkm" path="res://sprites/ab.png" id="3_hiy4x"]
+[ext_resource type="Texture2D" uid="uid://ds6t2fh37ucut" path="res://sprites/pow.png" id="4_jc1yr"]
+[ext_resource type="Texture2D" uid="uid://dvlkslam3t0t6" path="res://sprites/s.png" id="5_vx6aa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_553xs"]
 shader = ExtResource("1_yw1u6")

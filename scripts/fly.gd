@@ -5,13 +5,14 @@ func is_right(value: float) -> bool:
 		return false
 	return true
 
+@onready var _StartPoint = position
 
 func _ready():
 	Speed = 420.0
-	MaxHealth = 60.0
+	MaxHealth = 20.0
 	CurrentHealth = MaxHealth
 	Damage = 30.0
-	
+		
 	Sprite = $Sprite
 	Vision = $VisionArea
 	EnemyTimer = $EnemyTimer
@@ -31,12 +32,17 @@ func _on_vision_area_body_exited(body):
 	pass
 
 func idle(delta):
-	velocity.x = Speed * 0.8
+	pass
+	
 
 func _on_attack_area_body_entered(body):
 	if body.name != "player":
 		return
-	body.hurt(Damage)
+	if not Cooldown:
+		body.hurt(Damage)
+		EnemyTimer.start()
+		Cooldown = true
 		
+
 func _on_timer_timeout():
 	Cooldown = false

@@ -6,6 +6,7 @@ func is_right(value: float) -> bool:
 	return true
 
 @onready var _StartPoint = position
+@onready var AttackArea: Area2D = $AttackArea
 
 func _ready():
 	Speed = 420.0
@@ -25,7 +26,7 @@ func search():
 	velocity.y = direction.y * Speed 
 	
 	Sprite.flip_h = is_right(direction.x)
-
+	
 	move_and_slide()
 
 func _on_vision_area_body_exited(body):

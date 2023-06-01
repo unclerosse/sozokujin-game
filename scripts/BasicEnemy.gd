@@ -34,7 +34,6 @@ func _ready():
 	Raycast = $RayCast2D
 	EnemyTimer = $EnemyTimer
 	
-	print(EnemyTimer)
 	Sprite.play("idle") 
 
 func _physics_process(delta):
@@ -59,7 +58,8 @@ func attack():
 	Sprite.play("attack")
 
 func death():
-	Sprite.play("death")
+	if CurrentStatus == -1:
+		self.queue_free()
 	
 func hurt(value):
 	CurrentHealth -= value + (value * Armor * 0.01)
@@ -76,7 +76,7 @@ func _on_vision_area_body_exited(body):
 		Target = null
 		CurrentStatus = 0
 		
-func _enemy():
+func enemy():
 	pass
 
 func _on_timer_timeout():

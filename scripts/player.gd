@@ -13,6 +13,9 @@ var _Agility = 1
 var _Sanity = 1
 var _Power = 1
 
+var LightAttackDamage = 35
+var HeavyAttackDamage = 100
+
 var multiplier = 1.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -167,8 +170,21 @@ func _on_Timer_timeout():
 	else:
 		multiplier = 1.4
 
-
+func _on_weapon_area_body_entered(body):
+	if not body.has_method("enemy"):
+		return
+	
+	var type = StateMachine.get_current_node() 
+	var damage
+	
+	if type == "light_attack_1" or "light_attack_2":
+		damage = LightAttackDamage * (1 + _Agility * 0.05) * (1 + _Power * 0.1)
+	elif type == "heavy_attack":
+		damage = HeavyAttackDamage * (1 + _Power * 0.3)
+	
+	body.hurt(damage)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		$esc_menu.pause()
+

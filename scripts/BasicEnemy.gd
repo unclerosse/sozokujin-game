@@ -76,6 +76,8 @@ func _on_vision_area_body_exited(body):
 		Target = null
 		CurrentStatus = 0
 		
+func _enemy():
+	pass
 
 func _on_timer_timeout():
 	pass

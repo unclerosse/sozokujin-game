@@ -30,6 +30,17 @@ func  _ready():
 	StateMachine = Animator.get("parameters/playback")
 		
 func _physics_process(delta):
+	if not _IsAlive:
+		velocity.x = 0
+		if StateMachine.get_current_node() == "End":
+			get_tree().change_scene_to_file("res://scenes/death.tscn")
+		elif not is_on_floor():
+			velocity.y += gravity * delta * 1.8
+			if velocity.y > 1200.0:
+				velocity.y = 1200.0
+		else:
+			return
+	
 	if Input.is_action_just_pressed("player_jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
@@ -46,16 +57,28 @@ func _physics_process(delta):
 		_HasSecondJump = true
 	
 	var direction = Input.get_axis("player_left", "player_right")
-	velocity.x = direction * SPEED * multiplier
+	if _IsAlive:
+		velocity.x = direction * SPEED * multiplier
 	if velocity.x != 0 and PlayerTimer.is_stopped():
 		PlayerTimer.start()
 	elif velocity.x == 0:
 		multiplier = 1.0
 		PlayerTimer.stop()
 	
+	if Input.is_action_just_pressed("player_light_attack"):
+		if StateMachine.get_current_node() == "light_attack_1":
+			Animator["parameters/conditions/is_second_attack"] = true
+		else:
+			StateMachine.travel("light_attack_1")
+			Animator["parameters/conditions/is_second_attack"] = false
+	
+	if Input.is_action_just_pressed("player_heavy_attack"):
+		if StateMachine.get_current_node() == "heavy_attack":
+			return
+		StateMachine.travel("heavy_attack")
+			
 	move_and_slide()
-	animate()	
-
+	animate()
 
 func animate():
 	if velocity.x > 0:
@@ -65,26 +88,49 @@ func animate():
 	
 	if velocity == Vector2.ZERO:
 		Animator["parameters/conditions/idle"] = true
+		Animator["parameters/conditions/is_falling"] = false
+		Animator["parameters/conditions/is_jumping"] = false
 		Animator["parameters/conditions/is_moving"] = false
-	elif abs(velocity.x) > 0 and is_on_floor():
+
+	if velocity.y < 0:
 		Animator["parameters/conditions/idle"] = false
+		Animator["parameters/conditions/is_falling"] = false
+		Animator["parameters/conditions/is_jumping"] = true
+		Animator["parameters/conditions/is_moving"] = false
+		
+	elif velocity.y > 0:
+		Animator["parameters/conditions/idle"] = false
+		Animator["parameters/conditions/is_falling"] = true
+		Animator["parameters/conditions/is_jumping"] = false
+		Animator["parameters/conditions/is_moving"] = false
+		
+	if abs(velocity.x) > 0 and is_on_floor():
+		Animator["parameters/conditions/idle"] = false
+		Animator["parameters/conditions/is_falling"] = false
+		Animator["parameters/conditions/is_jumping"] = false
 		Animator["parameters/conditions/is_moving"] = true
 	
 
 func hurt(value):
+	if not _IsAlive:
+		return
 	var damage = int(value * _MaxHealth * 0.01 * (1 - _Agility * 0.05))
 	if value == 1:
 		ChangeHealth(-1)
 	ChangeHealth(-damage)
-	
+	if _IsAlive:
+		StateMachine.travel("hit")
+
 	
 func ChangeHealth(value):
 	if _CurrentHealth + value <= 0:
 		if _HasSecondLife:
 			_CurrentHealth = 1
 			_HasSecondLife = false
-		else: 
-			get_tree().change_scene_to_file("res://scenes/death.tscn")
+		else:
+			_CurrentHealth += value
+			StateMachine.travel("death")
+			_IsAlive = false 
 	elif _CurrentHealth + value <= _MaxHealth:
 		_CurrentHealth += value
 	else:
@@ -120,6 +166,8 @@ func _on_Timer_timeout():
 		multiplier = 1.1 + _Agility * 0.05
 	else:
 		multiplier = 1.4
+
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):

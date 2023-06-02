@@ -1,7 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://bp1gxnswichdo"]
+[gd_scene load_steps=38 format=3 uid="uid://bp1gxnswichdo"]
 
 [ext_resource type="PackedScene" uid="uid://cek2p1nw2vlwb" path="res://scenes/BasicEnemy.tscn" id="1_nydoi"]
 [ext_resource type="Script" path="res://scripts/fly.gd" id="2_lpr12"]
+[ext_resource type="Texture2D" uid="uid://hox7rmtqxnak" path="res://sprites/Enemy02/Death/Enemy02_Death_01.png" id="3_7eawe"]
+[ext_resource type="Texture2D" uid="uid://bfru030asaox5" path="res://sprites/Enemy02/Death/Enemy02_Death_02.png" id="4_0wan7"]
+[ext_resource type="Texture2D" uid="uid://bpch53w7vrmrv" path="res://sprites/Enemy02/Death/Enemy02_Death_03.png" id="5_g4bea"]
+[ext_resource type="Texture2D" uid="uid://dd8pqiiniyp4n" path="res://sprites/Enemy02/Death/Enemy02_Death_04.png" id="6_5ko5x"]
+[ext_resource type="Texture2D" uid="uid://ieofi63onwcy" path="res://sprites/Enemy02/Death/Enemy02_Death_05.png" id="7_apxl4"]
+[ext_resource type="Texture2D" uid="uid://kijwiy26o3bq" path="res://sprites/Enemy02/Death/Enemy02_Death_06.png" id="8_4c5hq"]
+[ext_resource type="Texture2D" uid="uid://d0np7tng28s7p" path="res://sprites/Enemy02/Death/Enemy02_Death_07.png" id="9_yxnx8"]
+[ext_resource type="Texture2D" uid="uid://dsrnhygsehvcf" path="res://sprites/Enemy02/Death/Enemy02_Death_08.png" id="10_bgbtv"]
+[ext_resource type="Texture2D" uid="uid://dbnuqmwdv1xhs" path="res://sprites/Enemy02/Death/Enemy02_Death_09.png" id="11_djvn5"]
+[ext_resource type="Texture2D" uid="uid://bxpqak8dtyweg" path="res://sprites/Enemy02/Death/Enemy02_Death_10.png" id="12_2quh5"]
+[ext_resource type="Texture2D" uid="uid://b4aymur22gbs6" path="res://sprites/Enemy02/Death/Enemy02_Death_11.png" id="13_c601r"]
 [ext_resource type="Texture2D" uid="uid://55ubhqvdw7gc" path="res://sprites/Enemy02/Fly/Enemy02_Fly_01.png" id="14_h68sk"]
 [ext_resource type="Texture2D" uid="uid://bb0f4f8bep3u5" path="res://sprites/Enemy02/Fly/Enemy02_Fly_02.png" id="15_ks4v1"]
 [ext_resource type="Texture2D" uid="uid://dt78qg4xtib5b" path="res://sprites/Enemy02/Fly/Enemy02_Fly_03.png" id="16_5vriv"]
@@ -10,11 +21,45 @@
 [ext_resource type="Texture2D" uid="uid://d1qiji368pavb" path="res://sprites/Enemy02/Fly/Enemy02_Fly_06.png" id="19_q3ugj"]
 [ext_resource type="Texture2D" uid="uid://c67llloyrujxf" path="res://sprites/Enemy02/Fly/Enemy02_Fly_07.png" id="20_78ahu"]
 [ext_resource type="Texture2D" uid="uid://4fr5h1c1pol2" path="res://sprites/Enemy02/Fly/Enemy02_Fly_08.png" id="21_beqdn"]
+[ext_resource type="AudioStream" uid="uid://dpb01aocpw3q6" path="res://resources/Gore - Blood, Punch, Soft.wav" id="22_sp2la"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ox8lk"]
 resource_local_to_scene = true
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7eawe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0wan7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g4bea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5ko5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_apxl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4c5hq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yxnx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_bgbtv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_djvn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2quh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_c601r")
+}],
 "loop": true,
 "name": &"death",
 "speed": 12.0
@@ -49,6 +94,175 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="AudioStream" id="AudioStream_v7fw0"]
+resource_local_to_scene = true
+
+[sub_resource type="Animation" id="Animation_brrco"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fly"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("AudioStream_v7fw0")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_p6gof"]
+resource_name = "death"
+length = 0.73334
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("22_sp2la")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_iaq0c"]
+resource_name = "fly"
+length = 0.53334
+loop_mode = 1
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fly"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kuckg"]
+_data = {
+"RESET": SubResource("Animation_brrco"),
+"death": SubResource("Animation_p6gof"),
+"fly": SubResource("Animation_iaq0c")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qosjm"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3ricd"]
+animation = &"fly"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xdqlm"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2rrpj"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wm511"]
+resource_local_to_scene = true
+states/End/position = Vector2(605, 82)
+states/Start/position = Vector2(216, 82)
+states/death/node = SubResource("AnimationNodeAnimation_qosjm")
+states/death/position = Vector2(426, 82)
+states/fly/node = SubResource("AnimationNodeAnimation_3ricd")
+states/fly/position = Vector2(323, 82)
+transitions = ["Start", "fly", SubResource("AnimationNodeStateMachineTransition_xdqlm"), "death", "End", SubResource("AnimationNodeStateMachineTransition_2rrpj")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_1i6sd"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_n0pty"]
 radius = 48.6621
 
@@ -66,27 +280,53 @@ script = ExtResource("2_lpr12")
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2(-4.76837e-07, -4.76837e-07)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_ox8lk")
 animation = &"fly"
 
-[node name="AttackArea" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_kuckg")
+}
+
+[node name="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_wm511")
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_1i6sd")
+
+[node name="AttackArea" parent="." index="3"]
 collision_layer = 0
 collision_mask = 4
 
 [node name="WeaponCollision" parent="AttackArea" index="0"]
 shape = SubResource("CircleShape2D_n0pty")
 
-[node name="BodyCollision" parent="." index="2"]
+[node name="BodyCollision" parent="." index="4"]
 shape = SubResource("CircleShape2D_xre6g")
 
-[node name="VisionArea" parent="." index="3"]
+[node name="VisionArea" parent="." index="5"]
 collision_layer = 0
 collision_mask = 4
 
 [node name="VisionCollision" parent="VisionArea" index="0"]
 shape = SubResource("CircleShape2D_7x6tq")
 
-[node name="EnemyTimer" parent="." index="4"]
+[node name="EnemyTimer" parent="." index="6"]
 one_shot = false
+
+[node name="AudioStreamPlayer" parent="." index="9"]
+stream = SubResource("AudioStream_v7fw0")
+pitch_scale = 0.78
+
+[node name="HPBar" parent="." index="10"]
+offset_top = -60.0
+offset_bottom = -48.0
+
+[node name="DamageLabel" parent="." index="11"]
+offset_left = -21.0
+offset_top = -82.0
+offset_right = 19.0
+offset_bottom = -56.0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

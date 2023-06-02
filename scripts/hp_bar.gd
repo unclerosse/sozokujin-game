@@ -23,6 +23,13 @@ func hp_change(hp):
 	$Pow/val_pow.text = val_pow
 	$S/val_s.text = val_s
 
+func set_hit(value, time):
+	$Hit.use_parent_material = value
+	if not value:
+		if $Timer.is_stopped():
+			$Timer.start(time)
+		
+
 func _ready():
 	set_hp(hp,max_hp)
 	pass # Replace with function body.
@@ -32,6 +39,11 @@ func _ready():
 func _process(delta):
 	var text = "FPS: " + str(Engine.get_frames_per_second())
 	$FPS.text = text
+	if not $Timer.is_stopped():
+		$Hit/ToActive.text = str(int($Timer.time_left))
+	else:
+		$Hit/ToActive.text = ""
+		$Hit.use_parent_material = true
 
 
 func _on_hp_bar_value_changed(value):

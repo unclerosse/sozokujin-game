@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://mdmeptcpvnnv"]
+[gd_scene load_steps=13 format=3 uid="uid://mdmeptcpvnnv"]
 
 [ext_resource type="Texture2D" uid="uid://di0611yxd53kl" path="res://sprites/hp_backt.png" id="1_e7s2x"]
 [ext_resource type="Script" path="res://scripts/hp_bar.gd" id="1_u8jk8"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://fpyasmlftjkm" path="res://sprites/ab.png" id="5_4yvai"]
 [ext_resource type="Texture2D" uid="uid://ds6t2fh37ucut" path="res://sprites/pow.png" id="6_b04q7"]
 [ext_resource type="Texture2D" uid="uid://dvlkslam3t0t6" path="res://sprites/s.png" id="7_fns0q"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7jpuk"]
+blend_mode = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_wtbg6"]
 font_color = Color(0, 1, 0, 1)
@@ -26,6 +29,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u8jk8")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="hp_bar" type="TextureProgressBar" parent="."]
 layout_mode = 0
@@ -59,8 +65,18 @@ grow_vertical = 2
 text = "10"
 
 [node name="Hit" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_7jpuk")
+use_parent_material = true
 position = Vector2(56, -64)
 texture = ExtResource("4_vm731")
+
+[node name="ToActive" type="Label" parent="Hit"]
+offset_left = -20.0
+offset_top = 31.0
+offset_right = 20.0
+offset_bottom = 57.0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Ab" type="Sprite2D" parent="."]
 position = Vector2(160, -64)

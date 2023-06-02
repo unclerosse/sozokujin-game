@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cek2p1nw2vlwb"]
+[gd_scene load_steps=9 format=3 uid="uid://cek2p1nw2vlwb"]
 
 [ext_resource type="Script" path="res://scripts/BasicEnemy.gd" id="1_uv0b4"]
+[ext_resource type="Texture2D" uid="uid://di0611yxd53kl" path="res://sprites/hp_backt.png" id="2_h7ask"]
+[ext_resource type="Texture2D" uid="uid://bxqa61bb18bb0" path="res://sprites/hp_out.png" id="3_r5xci"]
+[ext_resource type="Texture2D" uid="uid://dsbfy614vb5py" path="res://sprites/hp_in.png" id="4_ebo5t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8k7q4"]
 resource_local_to_scene = true
@@ -8,33 +11,36 @@ animations = [{
 "frames": [],
 "loop": true,
 "name": &"attack",
-"speed": 18.0
+"speed": 15.0
 }, {
 "frames": [],
 "loop": true,
 "name": &"death",
-"speed": 12.0
+"speed": 15.0
 }, {
 "frames": [],
 "loop": true,
 "name": &"hurt",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [],
 "loop": true,
 "name": &"idle",
-"speed": 12.0
+"speed": 15.0
 }, {
 "frames": [],
 "loop": true,
 "name": &"run",
-"speed": 12.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"turn",
-"speed": 12.0
+"speed": 15.0
 }]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i04t3"]
+resource_local_to_scene = true
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_vws5a"]
+
+[sub_resource type="AudioStream" id="AudioStream_l1nuc"]
+resource_local_to_scene = true
 
 [node name="BasicEnemy" type="CharacterBody2D"]
 collision_layer = 8
@@ -43,10 +49,16 @@ script = ExtResource("1_uv0b4")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(408, 179)
-scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_8k7q4")
-animation = &"hurt"
+animation = &"attack"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_i04t3")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_vws5a")
 
 [node name="AttackArea" type="Area2D" parent="."]
 
@@ -62,8 +74,36 @@ animation = &"hurt"
 wait_time = 2.0
 one_shot = true
 
+[node name="FrozenTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStream_l1nuc")
+
+[node name="HPBar" type="TextureProgressBar" parent="."]
+offset_left = -19.0
+offset_top = -6.0
+offset_right = 19.0
+offset_bottom = 6.0
+allow_greater = true
+allow_lesser = true
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("2_h7ask")
+texture_over = ExtResource("3_r5xci")
+texture_progress = ExtResource("4_ebo5t")
+
+[node name="DamageLabel" type="Label" parent="."]
+offset_left = -4.0
+offset_top = -26.0
+offset_right = 36.0
 
 [connection signal="body_entered" from="VisionArea" to="." method="_on_VisionArea_body_entered"]
 [connection signal="body_exited" from="VisionArea" to="." method="_on_vision_area_body_exited"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="FrozenTimer" to="." method="_on_frozen_timer_timeout"]
